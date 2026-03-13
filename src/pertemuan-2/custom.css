@@ -1,0 +1,117 @@
+/* Import font 'Plus Jakarta Sans' dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+
+/* Styling untuk keseluruhan halaman */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: #1e293b;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* Animasi untuk background body */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Container utama (Efek Glassmorphism) */
+.card {
+    max-width: 450px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 24px; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.02); 
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
+}
+
+/* KUNCI BARU: Membawa Gambar ke Tengah & Aesthetic */
+img {
+    display: block; /* Ubah gambar jadi blok biar bisa digeser marginnya */
+    margin: 0 auto 20px auto; /* Margin auto di kiri-kanan bikin gambar otomatis ke tengah */
+    max-width: 130px; /* Ukuran gambar dibatasi biar proporsional */
+    height: auto;
+    border-radius: 50%; /* Bikin gambarnya jadi bulat ala foto profil */
+    border: 4px solid white; /* Bingkai putih tebal */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Bayangan lembut di bawah gambar */
+    transition: transform 0.3s ease; /* Animasi saat gambar di-hover */
+}
+
+/* Efek saat gambar disentuh kursor */
+img:hover {
+    transform: scale(1.1) rotate(5deg); /* Gambar membesar dan miring dikit (Gen Z banget!) */
+}
+
+/* Header utama dan semua heading (H1, H2, H3, dll) dipaksa ke tengah */
+h1, h2, h3, h4 {
+    text-align: center; /* Ini yang bikin nama kamu ke tengah */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Spesifik untuk h1 (Judul Utama) */
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF0080, #7928CA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+h1::before {
+    content: "✨ "; 
+    -webkit-text-fill-color: initial; 
+}
+
+/* Paragraf */
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #475569;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* Garis pemisah aesthetic */
+hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(121, 40, 202, 0.4), transparent);
+    margin: 30px 0;
+    border-radius: 50%;
+}
+
+/* Greeting */
+small {
+    display: block;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    color: #94a3b8;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+small::after {
+    content: " 🚀";
+}
