@@ -2,7 +2,7 @@ export default function TailwindCSS(){
     return(
         <>
         <div>
-            <h1 class="border-2 border-orage-300 text-orange-300 px-4 py-2 rounded-lg ml-4 mt-4 bg-blue-950">Belajar Tailwind CSS</h1>
+            <h1 class="border-2 mr-4 border-orage-300 text-orange-300 px-4 py-2 rounded-lg ml-4 mt-4 bg-blue-950">Belajar Tailwind CSS</h1>
             <button className="bg-blue-950 text-orange-300 px-4 py-5 mx-4 rounded-3xl shadow-lg mt-4">
                 click me
             </button>
@@ -53,7 +53,7 @@ function BackgroundColors(){
 
 function ShadowEffects(){
     return (
-        <div className="ml-4 bg-blue-950 shadow-lg p-6 hover:rotate-2 rounded-lg hover:shadow-2xl transition">
+        <div className="ml-4 mr-4 bg-blue-950 shadow-lg p-6 hover:rotate-2 rounded-lg hover:shadow-2xl transition">
             <h3 className="text-xl text-orange-300 not-[]:font-sans">Hover me!</h3>
             <p className="text-orange-600 mt-2">Lihat efek bayangan saat hover.</p>
         </div>
