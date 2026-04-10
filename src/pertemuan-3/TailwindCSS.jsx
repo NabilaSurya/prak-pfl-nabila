@@ -1,6 +1,7 @@
 export default function TailwindCSS(){
     return(
         <>
+        <FlexboxGrid/>
         <div>
             <h1 class="border-2 mr-4 border-orage-300 text-orange-300 px-4 py-2 rounded-lg ml-4 mt-4 bg-blue-950">Belajar Tailwind CSS</h1>
             <button className="bg-blue-950 text-orange-300 px-4 py-5 mx-4 rounded-3xl shadow-lg mt-4">
@@ -48,6 +49,18 @@ function BackgroundColors(){
             <h3 className="text-xl font-bold font-serif">Tailwind Colors</h3>
             <p className="mt-2 text-orange-300">Belajar Tailwind itu seru dan fleksibel!</p>
         </div>
+    )
+}
+function FlexboxGrid(){
+    return (
+        <nav className="flex justify-between bg-blue-950 p-4 text-orange-300">
+            <h1 className="text-lg font-bold text-orange-300">MyWebsite</h1>
+            <ul className="flex space-x-4">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     )
 }
 
