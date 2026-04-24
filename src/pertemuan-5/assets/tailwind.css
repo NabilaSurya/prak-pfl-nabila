@@ -28,3 +28,11 @@ body {
     @apply font-barlow;
 }
 
+body {
+  font-family: 'Barlow', sans-serif;
+  @apply bg-[#F9FAFB];
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+}

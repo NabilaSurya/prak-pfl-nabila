@@ -1,115 +1,50 @@
+import { useState } from "react";
 import { FaHome, FaShoppingCart, FaUsers, FaList, FaPlus } from "react-icons/fa";
 
 export default function Sidebar() {
+    const [activeMenu, setActiveMenu] = useState("Dashboard");
+
+    const menus = [
+        { name: "Dashboard", icon: FaHome },
+        { name: "Orders", icon: FaShoppingCart },
+        { name: "Customers", icon: FaUsers },
+        { name: "Menu List", icon: FaList },
+    ];
+
     return (
-        <div
-            id="sidebar"
-            className="flex min-h-screen w-[360px] flex-col bg-white p-10 shadow-lg"
-        >
-            {/* Logo */}
-            <div id="sidebar-logo" className="flex flex-col">
-                <span
-                    id="logo-title"
-                    className="font-poppins text-[48px] text-gray-900 font-bold"
-                >
-                    Sedap <b id="logo-dot" className="text-hijau">.</b>
-                </span>
-                <span
-                    id="logo-subtitle"
-                    className="font-semibold text-gray-400"
-                >
-                    Modern Admin Dashboard
-                </span>
+        <div className="flex h-screen w-[280px] flex-col bg-white border-r border-gray-100 p-6 transition-all duration-300">
+            {/* Logo Area */}
+            <div className="mb-10 px-4">
+                <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                    Sedap<span className="text-hijau">.</span>
+                </h1>
             </div>
 
-            {/* Menu */}
-            <div id="sidebar-menu" className="mt-10 flex-1">
-                <ul id="menu-list" className="space-y-3">
-                    <li>
-                        <div
-                            id="menu-1"
-                            className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold"
-                        >
-                            <FaHome className="mr-4 text-xl" />
-                            Dashboard
-                        </div>
-                    </li>
+            {/* Navigasi */}
+            <nav className="flex-1 space-y-2">
+                {menus.map((menu) => (
+                    <button
+                        key={menu.name}
+                        onClick={() => setActiveMenu(menu.name)}
+                        className={`group flex w-full items-center p-4 rounded-xl font-bold transition-all duration-200 ${
+                            activeMenu === menu.name
+                                ? "bg-hijau text-white shadow-lg shadow-green-200"
+                                : "text-gray-400 hover:bg-gray-50 hover:text-gray-800"
+                        }`}
+                    >
+                        <menu.icon className={`mr-4 text-xl ${activeMenu === menu.name ? "text-white" : "text-gray-400 group-hover:text-gray-800"}`} />
+                        {menu.name}
+                    </button>
+                ))}
+            </nav>
 
-                    <li>
-                        <div
-                            id="menu-2"
-                            className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold"
-                        >
-                            <FaShoppingCart className="mr-4 text-xl" />
-                            Orders
-                        </div>
-                    </li>
-
-                    <li>
-                        <div
-                            id="menu-3"
-                            className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold"
-                        >
-                            <FaUsers className="mr-4 text-xl" />
-                            Customers
-                        </div>
-                    </li>
-
-                    <li>
-                        <div
-                            id="menu-4"
-                            className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold"
-                        >
-                            <FaList className="mr-4 text-xl" />
-                            Menu List
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            {/* Footer */}
-            <div id="sidebar-footer" className="mt-auto">
-                <div
-                    id="footer-card"
-                    className="bg-hijau px-4 py-2 rounded-md shadow-lg mb-10 flex items-center justify-between"
-                >
-                    <div id="footer-text" className="text-white text-sm">
-                        <span>
-                            Please organize your menus through button below!
-                        </span>
-
-                        <div
-                            id="add-menu-button"
-                            className="flex justify-center items-center p-2 mt-3 bg-white rounded-md space-x-2"
-                        >
-                            <FaPlus className="text-gray-600" />
-                            <span className="text-gray-600 flex items-center">
-                                Add Menus
-                            </span>
-                        </div>
-                    </div>
-
-                    <img
-                        id="footer-avatar"
-                        className="w-20 rounded-full"
-                        src="https://avatar.iran.liara.run/public/28"
-                        alt="avatar"
-                    />
-                </div>
-
-                <span
-                    id="footer-brand"
-                    className="font-bold text-gray-400"
-                >
-                    Sedap Restaurant Admin Dashboard
-                </span>
-
-                <p
-                    id="footer-copyright"
-                    className="font-light text-gray-400"
-                >
-                    &copy; 2025 All Right Reserved
-                </p>
+            {/* Action Card (Footer) */}
+            <div className="mt-auto bg-gray-900 rounded-3xl p-6 text-white shadow-xl">
+                <p className="font-bold text-sm mb-1">Add new menu?</p>
+                <p className="text-[11px] text-gray-400 mb-4">Click button below to start.</p>
+                <button className="w-full flex items-center justify-center p-3 bg-hijau hover:bg-green-600 rounded-xl font-bold text-sm transition">
+                    <FaPlus className="mr-2" /> Add Now
+                </button>
             </div>
         </div>
     );

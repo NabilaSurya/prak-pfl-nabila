@@ -1,78 +1,60 @@
-import { FaBell, FaSearch } from "react-icons/fa";
+import { useState } from "react";
+import { FaBell, FaSearch, FaUser } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
 import { SlSettings } from "react-icons/sl";
 
 export default function Header() {
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
     return (
-        <div
-            id="header-container"
-            className="flex items-center justify-between bg-white p-6 shadow-sm"
-        >
-            {/* Search Bar */}
-            <div
-                id="search-bar"
-                className="relative w-full max-w-lg"
-            >
-                <input
-                    id="search-input"
-                    type="text"
-                    placeholder="Search Here..."
-                    className="border border-gray-100 p-2 pr-10 bg-white w-full max-w-lg rounded-md outline-none"
+        <div className="flex items-center justify-between bg-white p-6 shadow-sm rounded-2xl mx-4 mt-4">
+            
+            {/* Search Bar dengan Dropdown Interaktif */}
+            <div className="relative w-full max-w-lg">
+                <input 
+                    onFocus={() => setIsSearchOpen(true)}
+                    onBlur={() => setTimeout(() => setIsSearchOpen(false), 200)}
+                    type="text" 
+                    placeholder="Search menu or orders..." 
+                    className="border border-gray-100 p-3 pl-10 bg-gray-50 w-full rounded-xl outline-none focus:ring-2 focus:ring-green-400 transition"
                 />
-                <FaSearch
-                    id="search-icon"
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-300"
-                />
+                <FaSearch className="absolute left-4 top-4 text-gray-400" />
+                
+                {/* Dropdown Hasil Pencarian */}
+                {isSearchOpen && (
+                    <div className="absolute top-14 left-0 w-full bg-white border border-gray-100 shadow-2xl rounded-xl p-4 z-50">
+                        <p className="text-xs text-gray-400 uppercase font-bold mb-2">Popular Searches</p>
+                        <div className="space-y-2">
+                            {['Nasi Goreng', 'Sate Ayam', 'Bakso'].map((item) => (
+                                <div key={item} className="p-2 hover:bg-gray-50 rounded-lg cursor-pointer text-sm font-medium">
+                                    {item}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Icons & Profile */}
-            <div
-                id="icons-container"
-                className="flex items-center space-x-4"
-            >
-                {/* Notification */}
-                <div
-                    id="notification-icon"
-                    className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer"
-                >
+            <div className="flex items-center space-x-6">
+                <div className="relative p-3 bg-blue-50 rounded-2xl text-blue-500 cursor-pointer hover:bg-blue-100 transition">
                     <FaBell />
-                    <span
-                        id="notification-badge"
-                        className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-200 rounded-full px-2 py-1 text-xs"
-                    >
-                        50
-                    </span>
+                    <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
                 </div>
+                
+                <div className="p-3 bg-blue-50 rounded-2xl cursor-pointer hover:bg-blue-100 transition"><FcAreaChart /></div>
+                <div className="p-3 bg-red-50 rounded-2xl text-red-500 cursor-pointer hover:bg-red-100 transition"><SlSettings /></div>
 
-                {/* Chart */}
-                <div
-                    id="chart-icon"
-                    className="p-3 bg-blue-100 rounded-2xl cursor-pointer"
-                >
-                    <FcAreaChart />
-                </div>
-
-                {/* Settings */}
-                <div
-                    id="settings-icon"
-                    className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer"
-                >
-                    <SlSettings />
-                </div>
-
-                {/* Profile */}
-                <div
-                    id="profile-container"
-                    className="flex items-center space-x-4 border-l pl-4 border-gray-300"
-                >
-                    <span id="profile-text">
-                        Hello, <b>Fikri Muhaffizh</b>
-                    </span>
-                    <img
-                        id="profile-avatar"
-                        src="https://avatar.iran.liara.run/public/28"
-                        className="w-10 h-10 rounded-full"
-                        alt="avatar"
+                <div className="flex items-center space-x-4 border-l pl-6 border-gray-100">
+                    <div className="text-right">
+                        <p className="text-sm font-bold text-gray-800">Nabila Surya</p>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-widest">Administrator</p>
+                    </div>
+                    {/* Avatar Cewek */}
+                    <img 
+                        src="/img/profil.jpg" 
+                        className="w-12 h-12 rounded-full border-2 border-green-400 p-0.5" 
+                        alt="Nabila Surya"
                     />
                 </div>
             </div>
